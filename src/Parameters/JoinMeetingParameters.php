@@ -74,11 +74,6 @@ class JoinMeetingParameters extends UserDataParameters
     private $clientURL;
 
     /**
-     * @var boolean
-     */
-    private $joinViaHtml5;
-
-    /**
      * @var array
      */
     private $customParameters;
@@ -92,10 +87,10 @@ class JoinMeetingParameters extends UserDataParameters
      */
     public function __construct($meetingId, $username, $password)
     {
-        $this->meetingId = $meetingId;
-        $this->username  = $username;
-        $this->password  = $password;
-        $this->customParameters = array();
+        $this->meetingId        = $meetingId;
+        $this->username         = $username;
+        $this->password         = $password;
+        $this->customParameters = [];
     }
 
     /**
@@ -295,27 +290,8 @@ class JoinMeetingParameters extends UserDataParameters
     }
 
     /**
-     * @return boolean
-     */
-    public function isJoinViaHtml5()
-    {
-        return $this->joinViaHtml5;
-    }
-
-    /**
-     * @param  boolean               $joinViaHtml5
-     * @return JoinMeetingParameters
-     */
-    public function setJoinViaHtml5($joinViaHtml5)
-    {
-        $this->joinViaHtml5 = $joinViaHtml5;
-
-        return $this;
-    }
-
-    /**
-     * @param  string $paramName
-     * @param  string $paramValue
+     * @param  string                $paramName
+     * @param  string                $paramValue
      * @return JoinMeetingParameters
      */
     public function setCustomParameter($paramName, $paramValue)
@@ -340,11 +316,10 @@ class JoinMeetingParameters extends UserDataParameters
             'configToken'  => $this->configToken,
             'avatarURL'    => $this->avatarURL,
             'redirect'     => $this->redirect ? 'true' : 'false',
-            'joinViaHtml5' => $this->joinViaHtml5 ? 'true' : 'false',
             'clientURL'    => $this->clientURL
         ];
 
-        foreach( $this->customParameters as $key => $value ) {
+        foreach ( $this->customParameters as $key => $value ) {
             $queries[$key] = $value;
         }
 
